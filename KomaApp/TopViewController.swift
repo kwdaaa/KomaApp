@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class TopViewController: UIViewController {
 
@@ -29,10 +30,19 @@ class TopViewController: UIViewController {
     
     @IBAction func historyButton(_ sender: Any) {
         
+        //login
+        Auth.auth().signInAnonymously { (authResult, error) in
+        let user = authResult?.user
+        print(user)
+            
+            //画面遷移
+            let inputVC = self.storyboard?.instantiateViewController(withIdentifier: "historyViewController")as! HistoryViewController
+            self.navigationController?.pushViewController(inputVC, animated: true)
+            
+        }
         
-        //画面遷移
-        let inputVC = self.storyboard?.instantiateViewController(withIdentifier: "historyViewController")as! HistoryViewController
-        self.navigationController?.pushViewController(inputVC, animated: true)
+        
+        
         
     }
     

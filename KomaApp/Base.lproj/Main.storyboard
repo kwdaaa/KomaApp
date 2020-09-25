@@ -40,7 +40,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="hE8-U0-wGL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aV1-W3-vCC" secondAttribute="trailing" constant="40" id="EG4-PF-9o6"/>
@@ -67,13 +67,61 @@
                     <view key="view" contentMode="scaleToFill" id="RF4-kZ-Chq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gtD-m7-FCg">
+                                <rect key="frame" x="0.0" y="64" width="414" height="832"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="414" id="YN9-OA-BO8">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="414"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YN9-OA-BO8" id="XDS-EQ-xRN">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wT0-1o-7F2">
+                                                    <rect key="frame" x="57" y="357" width="300" height="37"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="modifiednoimage" translatesAutoresizingMaskIntoConstraints="NO" id="6EQ-Eq-KPY">
+                                                    <rect key="frame" x="57" y="20" width="300" height="300"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="6EQ-Eq-KPY" secondAttribute="height" multiplier="1:1" id="UxD-uv-dJV"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6EQ-Eq-KPY" firstAttribute="top" secondItem="XDS-EQ-xRN" secondAttribute="top" constant="20" id="Yny-aN-grf"/>
+                                                <constraint firstItem="wT0-1o-7F2" firstAttribute="width" secondItem="6EQ-Eq-KPY" secondAttribute="width" multiplier="0.245" id="zpd-p0-Wmy"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="wT0-1o-7F2" secondAttribute="bottom" constant="20" id="7Ag-Ya-wP1"/>
+                                            <constraint firstItem="wT0-1o-7F2" firstAttribute="centerX" secondItem="YN9-OA-BO8" secondAttribute="centerX" id="Kxk-wb-RLs"/>
+                                            <constraint firstItem="6EQ-Eq-KPY" firstAttribute="centerX" secondItem="YN9-OA-BO8" secondAttribute="centerX" id="mZm-RN-rmm"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="gtD-m7-FCg" firstAttribute="leading" secondItem="r4N-eE-LkC" secondAttribute="leading" id="KFC-Dn-5z0"/>
+                            <constraint firstItem="r4N-eE-LkC" firstAttribute="trailing" secondItem="gtD-m7-FCg" secondAttribute="trailing" id="Pxj-Eb-aDg"/>
+                            <constraint firstItem="gtD-m7-FCg" firstAttribute="top" secondItem="r4N-eE-LkC" secondAttribute="top" constant="20" id="lIs-tk-77Q"/>
+                            <constraint firstAttribute="bottom" secondItem="gtD-m7-FCg" secondAttribute="bottom" id="u9E-zB-KSF"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="r4N-eE-LkC"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="gtD-m7-FCg" id="Fik-hI-tYK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mAl-I1-kjs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1225" y="-68"/>
+            <point key="canvasLocation" x="-1226.0869565217392" y="-68.303571428571431"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -83,69 +131,131 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Qc-Lg-pZL">
-                                <rect key="frame" x="0.0" y="482" width="414" height="414"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="文字を入力してください" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dTd-NR-EKI">
-                                        <rect key="frame" x="8" y="47" width="398" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0aX-Vp-cJx">
-                                        <rect key="frame" x="315" y="8" width="91" height="32"/>
-                                        <segments>
-                                            <segment title="しろ"/>
-                                            <segment title="くろ"/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="whiteBlackSegment:" destination="BYZ-38-t0r" eventType="valueChanged" id="rQh-BR-y63"/>
-                                        </connections>
-                                    </segmentedControl>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M87-gd-KP1">
-                                        <rect key="frame" x="8" y="89" width="398" height="216"/>
-                                    </pickerView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstItem="dTd-NR-EKI" firstAttribute="top" secondItem="0aX-Vp-cJx" secondAttribute="bottom" constant="8" id="Dv5-7l-HLy"/>
-                                    <constraint firstAttribute="trailing" secondItem="0aX-Vp-cJx" secondAttribute="trailing" constant="8" id="Gvg-tP-tsL"/>
-                                    <constraint firstItem="0aX-Vp-cJx" firstAttribute="top" secondItem="6Qc-Lg-pZL" secondAttribute="top" constant="8" id="SxH-bM-0nt"/>
-                                    <constraint firstAttribute="width" secondItem="6Qc-Lg-pZL" secondAttribute="height" multiplier="1:1" id="VZ3-Xo-sep"/>
-                                    <constraint firstAttribute="trailing" secondItem="M87-gd-KP1" secondAttribute="trailing" constant="8" id="cuD-3w-zkv"/>
-                                    <constraint firstItem="dTd-NR-EKI" firstAttribute="leading" secondItem="6Qc-Lg-pZL" secondAttribute="leading" constant="8" id="eMW-SV-0Vr"/>
-                                    <constraint firstItem="M87-gd-KP1" firstAttribute="top" secondItem="dTd-NR-EKI" secondAttribute="bottom" constant="8" id="i0N-Zx-CME"/>
-                                    <constraint firstAttribute="trailing" secondItem="dTd-NR-EKI" secondAttribute="trailing" constant="8" id="lA7-3T-5vO"/>
-                                    <constraint firstItem="M87-gd-KP1" firstAttribute="leading" secondItem="6Qc-Lg-pZL" secondAttribute="leading" constant="8" id="uWJ-oK-WzE"/>
-                                </constraints>
-                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OPK-Os-84o">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                <rect key="frame" x="67" y="91" width="270" height="270"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fZ4-ca-S6a">
+                                        <rect key="frame" x="0.0" y="5" width="270" height="265"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="LUf-we-JCK"/>
+                                        </constraints>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="qX0-Eg-teN" appends="YES" id="zWa-r7-e0J"/>
+                                        </connections>
+                                    </imageView>
+                                </subviews>
                                 <constraints>
+                                    <constraint firstItem="fZ4-ca-S6a" firstAttribute="height" secondItem="OPK-Os-84o" secondAttribute="height" multiplier="0.98939" id="9Tp-51-oNc"/>
                                     <constraint firstAttribute="width" secondItem="OPK-Os-84o" secondAttribute="height" multiplier="1:1" id="KH7-F3-YDn"/>
+                                    <constraint firstItem="fZ4-ca-S6a" firstAttribute="width" secondItem="OPK-Os-84o" secondAttribute="width" id="Ka6-pK-wJ3"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="A52-0n-uXq"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="CHM-Um-Met"/>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Qc-Lg-pZL">
+                                <rect key="frame" x="0.0" y="587" width="414" height="309"/>
+                                <subviews>
+                                    <pickerView contentMode="left" semanticContentAttribute="forceLeftToRight" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M87-gd-KP1">
+                                        <rect key="frame" x="20" y="109" width="374" height="170"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="M87-gd-KP1" secondAttribute="height" multiplier="11:5" id="XdK-ds-Vjj"/>
+                                        </constraints>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilf-1g-m1L">
+                                        <rect key="frame" x="344" y="60" width="50" height="30"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="YOb-dg-Xxp"/>
+                                        </constraints>
+                                        <state key="normal" title="入力">
+                                            <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="inputButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gDr-E2-rEE"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="20文字以内で入力してください" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dTd-NR-EKI">
+                                        <rect key="frame" x="20" y="60" width="304" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="35c-gd-GVs"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="r0A-za-XoE">
+                                        <rect key="frame" x="294" y="8" width="100" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="DPb-0v-XMZ"/>
+                                            <constraint firstAttribute="height" constant="30" id="oo6-7Q-YFG"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="ふつう"/>
+                                            <segment title="ふとめ"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="boldSegment:" destination="BYZ-38-t0r" eventType="valueChanged" id="Dnn-BJ-WfK"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="M87-gd-KP1" secondAttribute="trailing" constant="20" id="957-Bc-QE7"/>
+                                    <constraint firstItem="M87-gd-KP1" firstAttribute="leading" secondItem="6Qc-Lg-pZL" secondAttribute="leading" constant="20" id="9yj-2q-bde"/>
+                                    <constraint firstItem="ilf-1g-m1L" firstAttribute="leading" secondItem="dTd-NR-EKI" secondAttribute="trailing" constant="20" id="AXp-Fi-Dze"/>
+                                    <constraint firstItem="ilf-1g-m1L" firstAttribute="top" secondItem="r0A-za-XoE" secondAttribute="bottom" constant="20" id="AYD-gX-yTP"/>
+                                    <constraint firstAttribute="trailing" secondItem="r0A-za-XoE" secondAttribute="trailing" constant="20" id="QOA-PE-rzR"/>
+                                    <constraint firstAttribute="width" secondItem="6Qc-Lg-pZL" secondAttribute="height" multiplier="138:103" id="RbP-Vm-IBi"/>
+                                    <constraint firstAttribute="trailing" secondItem="ilf-1g-m1L" secondAttribute="trailing" constant="20" id="T7g-xF-ScO"/>
+                                    <constraint firstItem="dTd-NR-EKI" firstAttribute="top" secondItem="6Qc-Lg-pZL" secondAttribute="top" constant="60" id="W1b-qg-VHR"/>
+                                    <constraint firstItem="r0A-za-XoE" firstAttribute="top" secondItem="6Qc-Lg-pZL" secondAttribute="top" constant="10" id="bEd-er-yed"/>
+                                    <constraint firstItem="dTd-NR-EKI" firstAttribute="leading" secondItem="6Qc-Lg-pZL" secondAttribute="leading" constant="20" id="eMW-SV-0Vr"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="M87-gd-KP1" secondAttribute="bottom" constant="40" id="gCK-dX-kHW"/>
+                                    <constraint firstItem="dTd-NR-EKI" firstAttribute="top" secondItem="r0A-za-XoE" secondAttribute="bottom" constant="20" id="w5d-9O-34t"/>
+                                </constraints>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0aX-Vp-cJx">
+                                <rect key="frame" x="294" y="549" width="100" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="L8i-nK-Htc"/>
+                                    <constraint firstAttribute="width" constant="100" id="Qlb-aW-VNh"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="しろ"/>
+                                    <segment title="くろ"/>
+                                </segments>
+                                <connections>
+                                    <action selector="whiteBlackSegment:" destination="BYZ-38-t0r" eventType="valueChanged" id="rQh-BR-y63"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Qc-Lg-pZL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="124-Xh-lEE"/>
-                            <constraint firstItem="OPK-Os-84o" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="5oL-FY-Yyr"/>
+                            <constraint firstAttribute="trailing" secondItem="0aX-Vp-cJx" secondAttribute="trailing" constant="20" id="3rV-KH-1V0"/>
                             <constraint firstAttribute="bottom" secondItem="6Qc-Lg-pZL" secondAttribute="bottom" id="5vY-07-BXC"/>
-                            <constraint firstItem="OPK-Os-84o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7nA-fO-XaT"/>
                             <constraint firstItem="OPK-Os-84o" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Ocn-Cg-BAe"/>
+                            <constraint firstItem="6Qc-Lg-pZL" firstAttribute="top" secondItem="0aX-Vp-cJx" secondAttribute="bottom" constant="10" id="RHz-s6-WpX"/>
+                            <constraint firstItem="OPK-Os-84o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="efP-wn-2g2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6Qc-Lg-pZL" secondAttribute="trailing" id="hnp-b2-Dc1"/>
                             <constraint firstItem="6Qc-Lg-pZL" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qlB-jP-OIw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="imageView" destination="fZ4-ca-S6a" id="Ief-ne-Zd2"/>
                         <outlet property="pickerView" destination="M87-gd-KP1" id="UZP-1U-dCj"/>
                         <outlet property="scrollView" destination="OPK-Os-84o" id="rG6-a7-Zz7"/>
                         <outlet property="textField" destination="dTd-NR-EKI" id="8At-nD-GCL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="qX0-Eg-teN">
+                    <connections>
+                        <action selector="tapGesture:" destination="BYZ-38-t0r" id="QcE-pr-HCf"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1226.0869565217392" y="-835.04464285714278"/>
         </scene>
@@ -169,6 +279,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="modifiednoimage" width="360" height="360"/>
         <image name="つくる" width="400" height="400"/>
         <image name="りれき" width="400" height="400"/>
     </resources>
