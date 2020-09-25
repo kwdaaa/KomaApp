@@ -23,7 +23,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
       //紐付けs
     @IBOutlet var scrollView: UIScrollView!
-    
     @IBOutlet var imageView: UIImageView!
     
     
@@ -51,6 +50,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         }
        
         //上で格納したarrayから、ImageViewのarrayに画像を移す
+        /*
         for i in blackImageArray {
             
             let imageView = UIImageView()
@@ -58,13 +58,30 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             
             blackImageViewArray.append(UIImageView(image: ))
         }
+        */
         
-        for i in whiteImageArray {
-                whiteImageViewArray.append(UIImageView(image: i))
-        }
+        /*
+        for i in 0..<whiteImageArray.count {
+            
+            //画像を選択
+            let whiteImageView = UIImageView()
+            whiteImageView.contentMode = .scaleToFill
+            
+            
+            print("あれい",whiteImageArray[i])
+            print("写った？",whiteImageView)
+            //x(左上)の位置を決める
+            
+            let xPosition = self.imageView.frame.width * CGFloat(i)
+            whiteImageView.frame = CGRect(x: xPosition, y: 0, width: self.imageView.frame.width, height: self.imageView.frame.height)
+            
+            whiteImageView.image = whiteImageArray[i]
 
-        print("UIImageViewArrayだよ:",blackImageViewArray)
-        print("UIImageViewArrayだよ:",whiteImageViewArray)
+            
+            scrollView.contentSize.width = scrollView.frame.width * CGFloat(i + 1)
+            scrollView.addSubview(whiteImageView)
+        }
+*/
 
         
 //        setupScrollView()
@@ -73,10 +90,10 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        setupScrollView()
+        //setupScrollView()
     }
     
-    
+    /*
     func setupScrollView() {
         
         //scrollViewの準備
@@ -127,7 +144,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         
         
     }
-    
+    */
     
  
 
