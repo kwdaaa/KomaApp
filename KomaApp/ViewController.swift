@@ -48,19 +48,21 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     //セグメント
     @IBAction func whiteBlackSegment(_ sender: Any) {
         
-        //選択されているセグメントのインデックス
-        /*
-        let selectedIndex = whiteBlackSegment.selectedSegmentIndex
-        imageView.image = whiteImageArray[0]
-                   } else {
-                       imageView.image = blackImageArray[0]
-                   }
-        
-        */
+        scrollViewContent()
     }
+    
+    //セグメント
+    @IBOutlet var whiteBlackController: UISegmentedControl!
+    
     
     @IBAction func boldSegment(_ sender: Any) {
     }
+    
+    
+    //テキストラベル
+    
+    @IBOutlet var textLabel: UILabel!
+    
     
     
     //テキスト入力ボタン
@@ -69,6 +71,9 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         //なにか入力された場合
         if textField.text != "" {
             textMessage = textField.text!
+            
+            textLabel.text = textMessage
+            textField.text = ""
         } else {
             textField.text = "文字を入力してください"
         }
@@ -84,7 +89,24 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     
     //tapGesture
     @IBAction func tapGesture(_ sender: Any) {
+     
+        /*
         
+        let sourceImage = imageView.image
+        UIGraphicsBeginImageContext(sourceImage!.size);
+        let context: CGImage = UIGraphicsGetCurrentContext()! as! CGImage
+        let rect:CGRect  = CGRect(x: 0, y: 0, width: sourceImage!.size.width, height: sourceImage!.size.height);
+
+            draw(context as? CGContext, rect, sourceImage!.cgImage);
+
+        // draw your text here
+
+        let resultImage: UIImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext()
+
+        UIImageWriteToSavedPhotosAlbum(imageView.image!, self, Selector(("image:didFinishSavingWithError:contextInfo:")), nil)
+
+        */
     }
     
 //Pickerの設定
@@ -143,7 +165,9 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
                 break
             }
             
-            //プロトコルに送る値
+            
+            print("font:\(String(describing: font))\nsize:\(String(describing: size))")
+            //プロトコルに送る値(String? Int?)
             //komaData.get^^^(font: font, size: size)
         }
     }
@@ -164,19 +188,20 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
             whiteImageArray.append(imageW)
         }
        
-        //上で格納したarrayから、ImageViewのarrayに画像を移す
-        /*quita
-        for i in blackImageArray {
-            
-            let imageView = UIImageView()
-            imageView.image = UIImageView(blackImageArray[i])
-            
-            blackImageViewArray.append(UIImageView(image: ))
+        /*
+        //上で格納したarrayから、ImageViewのarrayにuiimage画像を移す
+        
+        for image in blackImageArray {
+            blackImageViewArray.append(UIImageView(image: image))
         }
+
+         for image in whiteImageArray {
+                whiteImageViewArray.append(UIImageView(image: image))
+         }
         */
         
         
-        //caucasian youtube
+        //youtube動画
         /*
         for i in 0..<whiteImageArray.count {
             
@@ -184,94 +209,110 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
             let whiteImageView = UIImageView()
             whiteImageView.contentMode = .scaleToFill
             
-            
-            print("あれい",whiteImageArray[i])
-            print("写った？",whiteImageView)
+            print("image配列",whiteImageArray[i])
+            print("imageView配列？",whiteImageView)
             //x(左上)の位置を決める
             
             let xPosition = self.imageView.frame.width * CGFloat(i)
             whiteImageView.frame = CGRect(x: xPosition, y: 0, width: self.imageView.frame.width, height: self.imageView.frame.height)
             
             whiteImageView.image = whiteImageArray[i]
-
             
             scrollView.contentSize.width = scrollView.frame.width * CGFloat(i + 1)
             scrollView.addSubview(whiteImageView)
         }
 */
-
         
-//        setupScrollView()
-
+        setupScrollView()
     }
     
     
-
-    
-    /*
     func setupScrollView() {
         
         //scrollViewの準備
-        scrollView = UIScrollView(frame: view.bounds)
+        
         scrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        scrollView.backgroundColor = .white
+//        scrollView.backgroundColor = .clear
         scrollView.contentSize = imageView.bounds.size
         scrollView.delegate = self
         scrollView.addSubview(imageView)
-        
-        scrollView.isPagingEnabled = true
-        scrollView.isScrollEnabled = true
-
-        view.addSubview(scrollView)
-        
-        scrollScreenWidth = screenSize.width
+    
+//        view.addSubview(scrollView)
 
         scrollViewContent()
-        
         
     }
     
     
     func scrollViewContent() {
-        /*
-        let imageView = blackImageViewArray[scrollCount]
-        //変数の枠を設定
-        imageView.frame = CGRect(x: UIScreen.main.bounds.width * 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        imageView.contentMode = UIView.ContentMode.scaleAspectFit
-        scrollView.addSubview(imageView)
-            
-            scrollCount += 1
-        */
         
+        //imageViewのfunc内変数
+//        let blackImageView = blackImageViewArray[scrollCount]
+//        let whiteImageView = whiteImageViewArray[scrollCount]
+//
+//        //imageViewの変数の枠を設定
+//        blackImageView.frame = CGRect(x: imageView.bounds.width * 0.0, y: imageView.bounds.height * 0.0, width: imageView.bounds.width, height: imageView.bounds.height)
+//        imageView.contentMode = UIView.ContentMode.scaleAspectFit
+//
+//        whiteImageView.frame = CGRect(x: imageView.bounds.width * 0.0, y: imageView.bounds.height * 0.0, width: imageView.bounds.width, height: imageView.bounds.height)
+//        imageView.contentMode = UIView.ContentMode.scaleAspectFit
+        
+        //UIImageのまま表示
+        /*変数は不要
+        let blackImage = blackImageArray[scrollCount]
+        let whiteImage = whiteImageArray[scrollCount]
+        */
+//        imageView.contentMode = .scaleToFill
+        
+        switch whiteBlackController.selectedSegmentIndex {
+        case 0:
+//            scrollView.addSubview(whiteImageView)
+            imageView.image = whiteImageArray[scrollCount]
+            
+/*
+scrollViewでimage(or imageView)をスクロールできるようにする！！
+*/
+            
+        case 1:
+//            scrollView.addSubview(blackImageView)
+            imageView.image = blackImageArray[scrollCount]
+        default:
+            break
+        }
+        
+        
+//            scrollCount += 1
+        
+        /*
         let firstImageView = blackImageViewArray[0]
         //変数の枠を設定
-        firstImageView.frame = CGRect(x: UIScreen.main.bounds.width * 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        firstImageView.contentMode = UIView.ContentMode.scaleAspectFit
+//        firstImageView.frame = CGRect(x: UIScreen.main.bounds.width * 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+//        firstImageView.contentMode = UIView.ContentMode.scaleAspectFit
         
         scrollView.addSubview(firstImageView)
         
-        
-        
         let secondImageView = blackImageViewArray[1]
-        //変数の枠を設定
-        secondImageView.frame = CGRect(x: UIScreen.main.bounds.width * 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        secondImageView.contentMode = UIView.ContentMode.scaleAspectFit
+//        //変数の枠を設定
+//        secondImageView.frame = CGRect(x: UIScreen.main.bounds.width * 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+//        secondImageView.contentMode = UIView.ContentMode.scaleAspectFit
         scrollView.addSubview(secondImageView)
         
-        
+        */
     }
-    */
     
+    
+
  
 
     override func didReceiveMemoryWarning() {
            super.didReceiveMemoryWarning()
        }
     
-    
-  
 
-   
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//           textLabel.text = textField.text
+           self.view.endEditing(true)
+    }
 
 }
-
