@@ -10,8 +10,8 @@ import Foundation
 
 
 struct KomaData {
-    let fontPickerArray = ["けいふぉんと","やさしさｱﾝﾁｯｸ"]
-    let sizePickerArray = ["15","16","17","18","19","20"]
+    let fontPickerArray = ["けいふぉんと","07YasashisaAntique"]
+    let sizePickerArray = ["15","16","17","18","19","20","21","22","23","24","25"]
     
     
     

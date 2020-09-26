@@ -10,6 +10,7 @@
 		BC62F87E251B45830040589C /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC62F87D251B45830040589C /* HistoryViewController.swift */; };
 		BC62F880251DB86D0040589C /* KomaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC62F87F251DB86D0040589C /* KomaData.swift */; };
 		BC62F882251E509D0040589C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC62F881251E509D0040589C /* GoogleService-Info.plist */; };
+		BC62F887251FB0A90040589C /* fontcomponents in Resources */ = {isa = PBXBuildFile; fileRef = BC62F886251FB0A90040589C /* fontcomponents */; };
 		BCEF62652519AE4F0058520E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEF62642519AE4F0058520E /* AppDelegate.swift */; };
 		BCEF62672519AE4F0058520E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEF62662519AE4F0058520E /* SceneDelegate.swift */; };
 		BCEF62692519AE4F0058520E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEF62682519AE4F0058520E /* ViewController.swift */; };
@@ -26,6 +27,7 @@
 		BC62F87D251B45830040589C /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		BC62F87F251DB86D0040589C /* KomaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KomaData.swift; sourceTree = "<group>"; };
 		BC62F881251E509D0040589C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		BC62F886251FB0A90040589C /* fontcomponents */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fontcomponents; path = ../../../Downloads/fontcomponents; sourceTree = "<group>"; };
 		BCEF62612519AE4F0058520E /* KomaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KomaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCEF62642519AE4F0058520E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCEF62662519AE4F0058520E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				BC62F87D251B45830040589C /* HistoryViewController.swift */,
 				BCEF626A2519AE4F0058520E /* Main.storyboard */,
 				BCEF626D2519AE500058520E /* Assets.xcassets */,
+				BC62F886251FB0A90040589C /* fontcomponents */,
 				BCEF626F2519AE500058520E /* LaunchScreen.storyboard */,
 				BCEF62722519AE500058520E /* Info.plist */,
 				BC62F881251E509D0040589C /* GoogleService-Info.plist */,
@@ -164,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCEF62712519AE500058520E /* LaunchScreen.storyboard in Resources */,
+				BC62F887251FB0A90040589C /* fontcomponents in Resources */,
 				BC62F882251E509D0040589C /* GoogleService-Info.plist in Resources */,
 				BCEF626E2519AE500058520E /* Assets.xcassets in Resources */,
 				BCEF626C2519AE4F0058520E /* Main.storyboard in Resources */,

@@ -2,6 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>keifont.ttf</string>
+		<string>07YasashisaAntique.otf</string>
+		<string>GenEiNuGothic-EB.ttf</string>
+		<string>LeviReBrushed.ttf</string>
+		<string>g_comichorrorR_freeR.ttf</string>
+		<string>GenEiAntiqueNv5-M.ttf</string>
+		<string>GenEiLateGo_v2.ttc</string>
+		<string>RiiPopkkR.otf</string>
+		<string>ZinHena-MK.otf</string>
+		<string>hkgyokk</string>
+	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>端末に画像を保存します</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>

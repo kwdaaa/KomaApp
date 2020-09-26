@@ -17,16 +17,15 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     var whiteImageArray = [UIImage]()
     var blackImageArray = [UIImage]()
  
+    /*
     var blackImageViewArray: [UIImageView] = [UIImageView]()
     var whiteImageViewArray: [UIImageView] = [UIImageView]()
     
     var selectedImageViewArray = [UIImageView]()
-    
+    */
     var scrollCount: Int = 0
     
-    var textMessage = ""
-    
-    //  別ファイルの構造体を取ってくるための変数(インスタンス)
+    //  別ファイルの構造体を取ってくるための変数(インスタンス) => ファイル分けた意味あんまなかった
     var komaData = KomaData()
 
     //多重配列(font、sizeの2つ分)
@@ -38,12 +37,12 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     
     /* 配列の要素を入れる変数 */
     var font: String!
-    var size: String!
-    
+    var size: Int!
     
       //紐付けs
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var screenShotView: UIView!
     
     //セグメント
     @IBAction func whiteBlackSegment(_ sender: Any) {
@@ -55,7 +54,14 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     @IBOutlet var whiteBlackController: UISegmentedControl!
     
     
+    @IBOutlet var boldController: UISegmentedControl!
+    
+    
     @IBAction func boldSegment(_ sender: Any) {
+        
+//        if boldController.selectedSegmentIndex == 1 {
+//        textLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
+        
     }
     
     
@@ -70,14 +76,43 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         
         //なにか入力された場合
         if textField.text != "" {
-            textMessage = textField.text!
             
-            textLabel.text = textMessage
-            textField.text = ""
+            //セグメントが0のとき
+            if whiteBlackController.selectedSegmentIndex == 0 {
+                //テキストカラーを変更
+                textLabel.textColor = .black
+            } else{
+                //テキストカラーを変更
+                textLabel.textColor = .white
+
+            }
         } else {
             textField.text = "文字を入力してください"
         }
         
+        
+        let textMessage = textField.text!
+            textLabel.text = textMessage
+        
+            textField.text = ""
+        
+        //picker初期値の設定が面倒なのでnilチェック => nilだとバグる
+        if font == nil || size == nil {
+            //(size != nil) || (font != nil) {
+            textLabel.text = "文字サイズとフォントを選んでください"
+
+            //textLabel.font = UIFont(name: "\(String(font!))", size: CGFloat(size!))
+            //textLabel.font = textLabel.font.withSize(CGFloat(size!))
+            
+        } else {
+            textLabel.font = UIFont(name: "\(font)", size: CGFloat(size))
+            //textLabel.font = textLabel.font.withSize(CGFloat(size!))
+            
+            
+            //textLabel.text = "文字サイズとフォントを選んでください"
+        }
+        
+        print("font:\(String(describing: font))\nsize:\(String(describing: size))")
         
     }
     
@@ -90,23 +125,8 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     //tapGesture
     @IBAction func tapGesture(_ sender: Any) {
      
-        /*
-        
-        let sourceImage = imageView.image
-        UIGraphicsBeginImageContext(sourceImage!.size);
-        let context: CGImage = UIGraphicsGetCurrentContext()! as! CGImage
-        let rect:CGRect  = CGRect(x: 0, y: 0, width: sourceImage!.size.width, height: sourceImage!.size.height);
-
-            draw(context as? CGContext, rect, sourceImage!.cgImage);
-
-        // draw your text here
-
-        let resultImage: UIImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext()
-
-        UIImageWriteToSavedPhotosAlbum(imageView.image!, self, Selector(("image:didFinishSavingWithError:contextInfo:")), nil)
-
-        */
+        takeScreenShot()
+        //alertAction()
     }
     
 //Pickerの設定
@@ -128,8 +148,8 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         dataArray.append(sizePickerArray)
         
         //プロトコルに送る&表示する初期値
-        font = fontPickerArray[0]
-        size = sizePickerArray[0]
+        //font = fontPickerArray[0]
+        //size = sizePickerArray[0]
     }
     
     //ドラムロールの数
@@ -158,16 +178,22 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
             switch component {
             case 0:
                 font = dataArray[component][row]
+                //textLabel.font = UIFont(name: font, size: CGFloat(Int(size)))
             case 1:
-                size = dataArray[component][row]
-            
+                size = Int(dataArray[component][row])
+                
             default:
                 break
             }
             
             
-            print("font:\(String(describing: font))\nsize:\(String(describing: size))")
-            //プロトコルに送る値(String? Int?)
+            
+            //ラベルのフォントとサイズを変更
+//            textLabel.font = textLabel.font.withSize(CGFloat(size!))
+//
+//            print("font:\(String(describing: font))\nsize:\(String(describing: size))")
+
+            //プロトコルに送る値(String? Int?) = 送らなくてok?
             //komaData.get^^^(font: font, size: size)
         }
     }
@@ -204,20 +230,13 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         //youtube動画
         /*
         for i in 0..<whiteImageArray.count {
-            
             //画像を選択
             let whiteImageView = UIImageView()
             whiteImageView.contentMode = .scaleToFill
-            
-            print("image配列",whiteImageArray[i])
-            print("imageView配列？",whiteImageView)
             //x(左上)の位置を決める
-            
             let xPosition = self.imageView.frame.width * CGFloat(i)
             whiteImageView.frame = CGRect(x: xPosition, y: 0, width: self.imageView.frame.width, height: self.imageView.frame.height)
-            
             whiteImageView.image = whiteImageArray[i]
-            
             scrollView.contentSize.width = scrollView.frame.width * CGFloat(i + 1)
             scrollView.addSubview(whiteImageView)
         }
@@ -228,7 +247,6 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     
     
     func setupScrollView() {
-        
         //scrollViewの準備
         
         scrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -236,14 +254,14 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         scrollView.contentSize = imageView.bounds.size
         scrollView.delegate = self
         scrollView.addSubview(imageView)
-    
+
 //        view.addSubview(scrollView)
 
         scrollViewContent()
         
     }
     
-    
+    //scrollView使用は断念（泣）
     func scrollViewContent() {
         
         //imageViewのfunc内変数
@@ -283,32 +301,72 @@ scrollViewでimage(or imageView)をスクロールできるようにする！！
         
 //            scrollCount += 1
         
-        /*
-        let firstImageView = blackImageViewArray[0]
+
+        //let firstImageView = blackImageViewArray[0]
         //変数の枠を設定
 //        firstImageView.frame = CGRect(x: UIScreen.main.bounds.width * 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
 //        firstImageView.contentMode = UIView.ContentMode.scaleAspectFit
         
-        scrollView.addSubview(firstImageView)
-        
-        let secondImageView = blackImageViewArray[1]
-//        //変数の枠を設定
-//        secondImageView.frame = CGRect(x: UIScreen.main.bounds.width * 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-//        secondImageView.contentMode = UIView.ContentMode.scaleAspectFit
-        scrollView.addSubview(secondImageView)
-        
-        */
+        //scrollView.addSubview(firstImageView)
     }
     
     
+    
+ func takeScreenShot() {
 
+        let width = screenShotView.bounds.width
+        let height = screenShotView.bounds.height
+        let size = CGSize(width: width, height: height)
+
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+
+    self.screenShotView.drawHierarchy(in: scrollView.bounds.offsetBy(dx: 0, dy: 0), afterScreenUpdates: true)                         //0点合わせ
+            screenShotImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        UIImageWriteToSavedPhotosAlbum(screenShotImage, nil, nil, nil)
+    }
+
+    var screenShotImage = UIImage()
+    
+
+    
+    /*
+    func alertAction(){
+        
+        //スクショを格納
+        let shareImage = screenShotImage
+        
+        let activityItems = [shareImage] as [Any]
+
+        let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+
+
+         // 使用しないアクティビティタイプ
+         let excludedActivityTypes = [
+         UIActivity.ActivityType.postToFacebook,
+         UIActivity.ActivityType.message,
+         UIActivity.ActivityType.print
+         ]
+
+         activityVC.excludedActivityTypes = excludedActivityTypes
+
+        // UIActivityViewControllerを表示
+        self.present(activityVC, animated: true, completion: nil)
+     
+     
+     
+     
+     
+
+        
+    }
+        */
  
-
     override func didReceiveMemoryWarning() {
            super.didReceiveMemoryWarning()
        }
     
-
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 //           textLabel.text = textField.text
