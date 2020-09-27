@@ -224,9 +224,6 @@
                                             <segment title="ふつう"/>
                                             <segment title="ふとめ"/>
                                         </segments>
-                                        <connections>
-                                            <action selector="boldSegment:" destination="BYZ-38-t0r" eventType="valueChanged" id="Dnn-BJ-WfK"/>
-                                        </connections>
                                     </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

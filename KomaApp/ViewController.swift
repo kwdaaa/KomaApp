@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+//import Firebase
 
 class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIScrollViewDelegate {
     
@@ -57,12 +57,31 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     @IBOutlet var boldController: UISegmentedControl!
     
     
+    
+    
+/*  //フォント名で文字の太さを決めるため、役に立たない
     @IBAction func boldSegment(_ sender: Any) {
         
-//        if boldController.selectedSegmentIndex == 1 {
-//        textLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
-        
-    }
+        if size == nil {
+            showAlert(message: "文字サイズを選んでださい")
+            
+        } else {
+            switch boldController.selectedSegmentIndex {
+            case 0:
+                textLabel.font = UIFont.systemFont(ofSize: CGFloat(size!))
+                print("hosoi?")
+                
+            case 1:
+                textLabel.font = UIFont.boldSystemFont(ofSize: CGFloat(size!))
+                print("futoi?")
+            default:
+                break
+            }
+        }
+     }
+*/
+
+
     
     
     //テキストラベル
@@ -129,7 +148,7 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     //picker
     @IBOutlet var pickerView: UIPickerView!
     
-    var tapCount: Int = 0
+//    var tapCount: Int = 0
     //tapGesture
     @IBAction func tapGesture(_ sender: Any) {
      
@@ -137,16 +156,16 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         saveAlert(message: "保存しますか？")
         //takeScreenShot()
         
-        tapCount += 1
-        print(tapCount)
+//        tapCount += 1
+//        print(tapCount)
     }
     
 //Pickerの設定
     func pickerSet() {
         
         //viewDidで起動
-        pickerView.delegate = self
-        pickerView.dataSource = self
+//        pickerView.delegate = self
+//        pickerView.dataSource = self
         
         //プロトコル用
         //komaData.delegate = self
@@ -212,6 +231,9 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     //viewDid
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        pickerView.delegate = self
+        pickerView.dataSource = self
         
         pickerSet()
         
@@ -344,7 +366,6 @@ scrollViewでimage(or imageView)をスクロールできるようにする！！
     
     func saveAlert(message: String){
         
-        print("SAVEアラート起動？")
         //UIAlertControllerで初期設定
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         

@@ -14,6 +14,7 @@ class TopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Do any additional setup after loading the view.
     }
     
@@ -28,8 +29,16 @@ class TopViewController: UIViewController {
         self.navigationController?.pushViewController(inputVC, animated: true)
     }
     
+    
+
+    
+    
+    //database接続後unlock
     @IBAction func historyButton(_ sender: Any) {
         
+        showAlert(message: "近日公開")
+        //showAlert
+/*
         //login
         Auth.auth().signInAnonymously { (authResult, error) in
         let user = authResult?.user
@@ -41,8 +50,24 @@ class TopViewController: UIViewController {
             
         }
         
+*/
         
         
+    }
+    
+    
+    
+    
+    func showAlert(message : String){
+        //      オプションUIAlertController、Actionを使い、要素を指定。
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        
+        let close = UIAlertAction(title: "OK", style: .cancel,handler: nil)
+        
+        //      ボタンを押した時にでるポップアップを追加
+        alert.addAction(close)
+        
+        present(alert, animated: true, completion: nil)
         
     }
     
