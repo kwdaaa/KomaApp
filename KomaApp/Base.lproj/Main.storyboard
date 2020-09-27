@@ -161,6 +161,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="テキストが表示されます" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IkZ-po-T2R" userLabel="text">
                                         <rect key="frame" x="65" y="129.5" width="170" height="41.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="170" id="YJr-VH-Uvu"/>
                                         </constraints>
@@ -170,6 +171,7 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="OPK-Os-84o" firstAttribute="centerY" secondItem="Pvl-Ut-TT0" secondAttribute="centerY" id="09u-l4-2ng"/>
                                     <constraint firstItem="IkZ-po-T2R" firstAttribute="centerY" secondItem="Pvl-Ut-TT0" secondAttribute="centerY" id="0wq-vE-UV3"/>
@@ -178,6 +180,9 @@
                                     <constraint firstAttribute="height" constant="300" id="bi5-ci-WEG"/>
                                     <constraint firstAttribute="width" constant="300" id="uvq-7o-tbB"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="a9M-F1-vfx" appends="YES" id="GG8-hx-g7u"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Qc-Lg-pZL">
                                 <rect key="frame" x="0.0" y="587" width="414" height="309"/>
@@ -268,9 +273,6 @@
                             <constraint firstItem="6Qc-Lg-pZL" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qlB-jP-OIw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="2Ad-6b-EJV" appends="YES" id="UOr-uh-8RU"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="boldController" destination="0aX-Vp-cJx" id="Uxs-xp-JHk"/>
@@ -284,9 +286,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="2Ad-6b-EJV">
+                <tapGestureRecognizer id="a9M-F1-vfx">
                     <connections>
-                        <action selector="tapGesture:" destination="BYZ-38-t0r" id="KUU-hL-hMC"/>
+                        <action selector="tapGesture:" destination="BYZ-38-t0r" id="z4o-4g-tgN"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

@@ -71,50 +71,57 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     
     
     
+    
+    
     //テキスト入力ボタン
     @IBAction func inputButton(_ sender: Any) {
         
+        //なにも入力されなかった場合
+        if textField.text == "" {
+            showAlert(message: "文字を入力してください")
+            
+        } else {
         //なにか入力された場合
-        if textField.text != "" {
             
-            //セグメントが0のとき
-            if whiteBlackController.selectedSegmentIndex == 0 {
-                //テキストカラーを変更
+                //セグメントが0のとき
+                if whiteBlackController.selectedSegmentIndex == 0 {
+                //textLabelのカラーを変更
                 textLabel.textColor = .black
-            } else{
-                //テキストカラーを変更
+                } else{
+                //textLabelのカラーを変更
                 textLabel.textColor = .white
+                }
 
-            }
-        } else {
-            textField.text = "文字を入力してください"
-        }
-        
-        
-        let textMessage = textField.text!
-            textLabel.text = textMessage
-        
-            textField.text = ""
-        
-        //picker初期値の設定が面倒なのでnilチェック => nilだとバグる
-        if font == nil || size == nil {
-            //(size != nil) || (font != nil) {
-            textLabel.text = "文字サイズとフォントを選んでください"
+            //picker初期値の設定が面倒なので、pickerで設定されたかどうかの
+            //nilチェック => そのままだとnil
+            if font == nil || size == nil {
+            
+                showAlert(message: "文字サイズとフォントを選んでください")
+                //textLabel.text = "文字サイズとフォントを選んでください"
 
-            //textLabel.font = UIFont(name: "\(String(font!))", size: CGFloat(size!))
-            //textLabel.font = textLabel.font.withSize(CGFloat(size!))
+                //textLabel.font = UIFont(name: "\(String(font!))", size: CGFloat(size!))
+                //textLabel.font = textLabel.font.withSize(CGFloat(size!))
             
-        } else {
-            textLabel.font = UIFont(name: "\(font)", size: CGFloat(size))
-            //textLabel.font = textLabel.font.withSize(CGFloat(size!))
+            } else {
+            //Pickerで設定された場合
+                
+                let textMessage = textField.text!
+                           textLabel.text = textMessage
+                       
+                           print(textMessage)
+                           
+                           textField.text = ""
+                //fontとsizeの値を指定
+                //textLabel.font = UIFont(name: "\(font)", size: CGFloat(size))
+                //siseだけ
+                textLabel.font = textLabel.font.withSize(CGFloat(size!))
+            }//pickerのnilチェックのif
             
-            
-            //textLabel.text = "文字サイズとフォントを選んでください"
-        }
+        }//textがnilかどうかをチェックするif
         
         print("font:\(String(describing: font))\nsize:\(String(describing: size))")
         
-    }
+    }//func
     
     //テキストフィールド
     @IBOutlet var textField: UITextField!
@@ -122,11 +129,16 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     //picker
     @IBOutlet var pickerView: UIPickerView!
     
+    var tapCount: Int = 0
     //tapGesture
     @IBAction func tapGesture(_ sender: Any) {
      
-        takeScreenShot()
-        //alertAction()
+        
+        saveAlert(message: "保存しますか？")
+        //takeScreenShot()
+        
+        tapCount += 1
+        print(tapCount)
     }
     
 //Pickerの設定
@@ -186,8 +198,6 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
                 break
             }
             
-            
-            
             //ラベルのフォントとサイズを変更
 //            textLabel.font = textLabel.font.withSize(CGFloat(size!))
 //
@@ -227,20 +237,6 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         */
         
         
-        //youtube動画
-        /*
-        for i in 0..<whiteImageArray.count {
-            //画像を選択
-            let whiteImageView = UIImageView()
-            whiteImageView.contentMode = .scaleToFill
-            //x(左上)の位置を決める
-            let xPosition = self.imageView.frame.width * CGFloat(i)
-            whiteImageView.frame = CGRect(x: xPosition, y: 0, width: self.imageView.frame.width, height: self.imageView.frame.height)
-            whiteImageView.image = whiteImageArray[i]
-            scrollView.contentSize.width = scrollView.frame.width * CGFloat(i + 1)
-            scrollView.addSubview(whiteImageView)
-        }
-*/
         
         setupScrollView()
     }
@@ -304,7 +300,8 @@ scrollViewでimage(or imageView)をスクロールできるようにする！！
 
         //let firstImageView = blackImageViewArray[0]
         //変数の枠を設定
-//        firstImageView.frame = CGRect(x: UIScreen.main.bounds.width * 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+//        firstImageView.frame = CGRect(x: UIScreen.main.bounds.width * 0.0, y: 0.0,
+//        width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
 //        firstImageView.contentMode = UIView.ContentMode.scaleAspectFit
         
         //scrollView.addSubview(firstImageView)
@@ -329,39 +326,59 @@ scrollViewでimage(or imageView)をスクロールできるようにする！！
 
     var screenShotImage = UIImage()
     
-
     
-    /*
-    func alertAction(){
-        
-        //スクショを格納
-        let shareImage = screenShotImage
-        
-        let activityItems = [shareImage] as [Any]
-
-        let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
-
-
-         // 使用しないアクティビティタイプ
-         let excludedActivityTypes = [
-         UIActivity.ActivityType.postToFacebook,
-         UIActivity.ActivityType.message,
-         UIActivity.ActivityType.print
-         ]
-
-         activityVC.excludedActivityTypes = excludedActivityTypes
-
-        // UIActivityViewControllerを表示
-        self.present(activityVC, animated: true, completion: nil)
-     
-     
-     
-     
-     
-
+    
+    func showAlert(message : String){
+            //      オプションUIAlertController、Actionを使い、要素を指定。
+            let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+            
+            let close = UIAlertAction(title: "OK", style: .cancel,handler: nil)
+            
+            //      ボタンを押した時にでるポップアップを追加
+            alert.addAction(close)
+            
+            present(alert, animated: true, completion: nil)
         
     }
-        */
+    
+    
+    func saveAlert(message: String){
+        
+        print("SAVEアラート起動？")
+        //UIAlertControllerで初期設定
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        
+        //UIAletActionでalertの要素を定義＆追加
+        let save = UIAlertAction(title: "保存", style: .default, handler: {(action:UIAlertAction!) -> Void in
+            
+            //スクショを撮る
+            self.takeScreenShot()
+            //撮れたとメッセージ
+            self.showAlert(message: "保存しました！")
+            
+            //画面遷移したい！
+        })
+        
+        //UIAletActionでalertの要素を定義＆追加
+        let close = UIAlertAction(title: "閉じる", style: .cancel,handler: nil)
+        
+/*バグの原因
+        {(action:UIAlertAction!) -> Void in
+
+            self.present(alert, animated: true, completion: nil)
+        })
+*/
+        
+        alert.addAction(save)
+        alert.addAction(close)
+        
+        present(alert, animated: true, completion: nil)
+        
+        
+    }//func
+    
+    
+    
  
     override func didReceiveMemoryWarning() {
            super.didReceiveMemoryWarning()
@@ -373,4 +390,12 @@ scrollViewでimage(or imageView)をスクロールできるようにする！！
            self.view.endEditing(true)
     }
 
+    
+    
 }
+//テスター
+//
+//    @IBAction func testButton(_ sender: Any) {
+//    saveAlert(message: "保存しますか？")
+//    }
+
