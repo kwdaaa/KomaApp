@@ -414,7 +414,7 @@ scrollViewでimage(or imageView)をスクロールできるようにする！！
     
     
 }
-//テスター
+//テスターだよ！
 //
 //    @IBAction func testButton(_ sender: Any) {
 //    saveAlert(message: "保存しますか？")
